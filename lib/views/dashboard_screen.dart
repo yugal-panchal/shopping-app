@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:seek_assesment/view/cart_screen.dart';
-import 'package:seek_assesment/view/explore_products_screen.dart';
-import 'package:seek_assesment/view/product_list_screen.dart';
-import 'package:seek_assesment/view/profile_screen.dart';
-import 'package:seek_assesment/view/wishlist_screen.dart';
+import 'package:seek_assesment/views/cart_screen.dart';
+import 'package:seek_assesment/views/explore_products_screen.dart';
+import 'package:seek_assesment/views/product_list_screen.dart';
+import 'package:seek_assesment/views/profile_screen.dart';
+import 'package:seek_assesment/views/wishlist_screen.dart';
 
-import '../model/product.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

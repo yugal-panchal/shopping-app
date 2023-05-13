@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:seek_assesment/helpers/toast.dart';
+import 'package:seek_assesment/controllers/helpers/toast.dart';
 
 class ApiCaller {
   Future<bool> checkConnection() async {

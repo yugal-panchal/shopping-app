@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seek_assesment/view/dashboard_screen.dart';
+import 'package:seek_assesment/views/dashboard_screen.dart';
 
 void main() {
   runApp(const MyApp());
