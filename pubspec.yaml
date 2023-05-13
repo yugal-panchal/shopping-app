@@ -42,6 +42,7 @@ dependencies:
   build_runner: ^2.3.3
   json_serializable: ^6.6.2
   get: ^4.6.5
+  cloud_firestore: ^4.7.0
 
 dev_dependencies:
   flutter_test:

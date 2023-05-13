@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "939357557658",
+    "project_id": "seek-f42fe",
+    "storage_bucket": "seek-f42fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939357557658:android:76487e3798151979012023",
+        "android_client_info": {
+          "package_name": "com.example.seek_assesment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939357557658-qdc4lu3a64m49as1chau8ikelgusdv49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiQFBOHL-Cp1eUNjJtyKTUGWbqgQ3QhAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939357557658-qdc4lu3a64m49as1chau8ikelgusdv49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

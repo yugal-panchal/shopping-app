@@ -11,7 +11,7 @@ class ExploreProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: GetX<ShoppingController>(builder: (controller) {
-        return controller.products.isEmpty ? const CircularProgressIndicator() : ProductCard(product: controller.products.first);
+        return controller.products.isEmpty ? const CircularProgressIndicator(color: Colors.black,) : ProductCard(product: controller.products.first);
       }),
     );
   }
