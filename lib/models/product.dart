@@ -9,7 +9,7 @@ class Product with _$Product {
   factory Product({
     @JsonKey(name: "id") int? id,
     @JsonKey(name: "title") String? title,
-    @JsonKey(name: "price") int? price,
+    @JsonKey(name: "price") double? price,
     @JsonKey(name: "description") String? description,
     @JsonKey(name: "category") String? category,
     @JsonKey(name: "image") String? image,

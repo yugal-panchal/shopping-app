@@ -25,7 +25,7 @@ mixin _$Product {
   @JsonKey(name: "title")
   String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: "price")
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: "category")
@@ -48,7 +48,7 @@ abstract class $ProductCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "title") String? title,
-      @JsonKey(name: "price") int? price,
+      @JsonKey(name: "price") double? price,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "category") String? category,
       @JsonKey(name: "image") String? image,
@@ -90,7 +90,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "title") String? title,
-      @JsonKey(name: "price") int? price,
+      @JsonKey(name: "price") double? price,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "category") String? category,
       @JsonKey(name: "image") String? image,
@@ -173,7 +173,7 @@ class __$$_ProductCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -217,7 +217,7 @@ class _$_Product implements _Product {
   final String? title;
   @override
   @JsonKey(name: "price")
-  final int? price;
+  final double? price;
   @override
   @JsonKey(name: "description")
   final String? description;
@@ -275,7 +275,7 @@ abstract class _Product implements Product {
   factory _Product(
       {@JsonKey(name: "id") final int? id,
       @JsonKey(name: "title") final String? title,
-      @JsonKey(name: "price") final int? price,
+      @JsonKey(name: "price") final double? price,
       @JsonKey(name: "description") final String? description,
       @JsonKey(name: "category") final String? category,
       @JsonKey(name: "image") final String? image,
@@ -291,7 +291,7 @@ abstract class _Product implements Product {
   String? get title;
   @override
   @JsonKey(name: "price")
-  int? get price;
+  double? get price;
   @override
   @JsonKey(name: "description")
   String? get description;

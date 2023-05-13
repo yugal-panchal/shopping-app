@@ -17,7 +17,7 @@ class ApiCaller {
     return false;
   }
 
-  Future<dynamic> get(String url, String? query) async {
+  Future<dynamic> get({required String url, String? query}) async {
     try {
       if (await checkConnection()) {
         final response = await http.get(Uri.parse(url).replace(query: query));
