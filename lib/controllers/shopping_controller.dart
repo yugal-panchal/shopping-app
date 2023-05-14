@@ -7,6 +7,8 @@ import '../models/product.dart';
 class ShoppingController extends GetxController {
   final ApiCaller _apiCaller = ApiCaller();
   List<Product> products = <Product>[].obs;
+  var currentProduct = Product().obs;
+  var sizeFormat = "".obs;
   @override
   void onInit() {
     getAllProducts();
@@ -27,5 +29,13 @@ class ShoppingController extends GetxController {
     } catch (e) {
       debugPrint(e.toString());
     }
+  }
+
+  updateCurrentProduct(Product product){
+    currentProduct.value = product;
+  }
+
+  updateSizeFormat(String format){
+    sizeFormat.value = format;
   }
 }

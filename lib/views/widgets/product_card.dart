@@ -5,7 +5,8 @@ import 'package:seek_assesment/models/product.dart';
 import 'package:seek_assesment/views/product_detail_screen.dart';
 import 'package:seek_assesment/views/style/text_style.dart';
 
-import '../../controllers/helpers/text_maping.dart';
+import '../../controllers/helpers/constants.dart';
+import '../../controllers/shopping_controller.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -24,7 +25,10 @@ class ProductCard extends StatelessWidget {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: () => Get.to(const ProductDetails()),
+            onTap: () {
+              Get.find<ShoppingController>().updateCurrentProduct(product);
+              Get.to(() => ProductDetails());
+            },
             child: Container(
               alignment: Alignment.center,
               height: MediaQuery.of(context).size.height * 0.15,
