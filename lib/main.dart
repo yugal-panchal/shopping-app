@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:seek_assesment/views/login_screen.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:seek_assesment/views/dashboard_screen.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Montserrat",
         primaryColor: Colors.black,
       ),
-      home: const DashboardScreen(),
+      home: LoginScreen(),
     );
   }
 }

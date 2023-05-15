@@ -4,16 +4,11 @@ import 'package:seek_assesment/controllers/helpers/api_caller.dart';
 
 import '../models/product.dart';
 
-class ShoppingController extends GetxController {
+class  ShoppingController extends GetxController {
   final ApiCaller _apiCaller = ApiCaller();
   List<Product> products = <Product>[].obs;
   var currentProduct = Product().obs;
   var sizeFormat = "".obs;
-  @override
-  void onInit() {
-    getAllProducts();
-    super.onInit();
-  }
 
   getAllProducts() async {
     List<Product> allProducts = [];
@@ -31,11 +26,45 @@ class ShoppingController extends GetxController {
     }
   }
 
-  updateCurrentProduct(Product product){
+  updateCurrentProduct(Product product) {
     currentProduct.value = product;
   }
 
-  updateSizeFormat(String format){
+  updateSizeFormat(String format) {
     sizeFormat.value = format;
   }
+
+  productLiked(int id) {
+    Product current = products.firstWhere((element) => element.id == id);
+    current = current.copyWith(isLiked: true);
+    for (int i=0;i<products.length;i++) {
+      if (products[i].id == id) {
+        products[i] = current;
+        break;
+      }
+    }
+  }
+
+  productDisliked(int id) {
+    Product current = products.firstWhere((element) => element.id == id);
+    current = current.copyWith(isLiked: false);
+    for (int i=0;i<products.length;i++) {
+      if (products[i].id == id) {
+        products[i] = current;
+        break;
+      }
+    }
+  }
+
+  initializeLikedProduct(List<Product> likedProducts)async {
+    await getAllProducts();
+    for(int i =0;i<likedProducts.length;i++){
+      for(int j=0;j<products.length;j++){
+        if(likedProducts[i].id==products[j].id){
+          products[j] = likedProducts[i];
+          break;
+        }
+      }
+    }
+  }  
 }

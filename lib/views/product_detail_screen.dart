@@ -49,7 +49,7 @@ class ProductDetails extends StatelessWidget {
                     ),
                     Container(
                       alignment: Alignment.center,
-                      height: MediaQuery.of(context).size.height * 0.25,
+                      height: Get.height * 0.25,
                       child: controller.currentProduct.value.image == "" ||
                               controller.currentProduct.value.image == null
                           ? Image.asset("assets/pics/image_broken.jpg")
@@ -62,7 +62,7 @@ class ProductDetails extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.2,
+                  height: Get.width * 0.2,
                   child: ListView.separated(
                       physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,

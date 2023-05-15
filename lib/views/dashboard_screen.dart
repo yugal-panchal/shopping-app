@@ -21,7 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     widgetList = [
-      ExploreProducts(),
+      const ExploreProducts(),
       const ProductListing(),
       const CartScreen(),
       const WishlistScreen(),

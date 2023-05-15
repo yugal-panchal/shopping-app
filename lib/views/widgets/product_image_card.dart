@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductImageCard extends StatelessWidget {
   final String image;
@@ -7,7 +8,7 @@ class ProductImageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.2,
+      width: Get.width * 0.2,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         border: Border.all(color: Colors.grey),

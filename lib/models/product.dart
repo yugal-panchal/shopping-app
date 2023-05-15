@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'product.freezed.dart';
 part 'product.g.dart';
 
-@freezed
+@unfreezed
 class Product with _$Product {
 
   factory Product({
@@ -14,6 +14,7 @@ class Product with _$Product {
     @JsonKey(name: "category") String? category,
     @JsonKey(name: "image") String? image,
     @JsonKey(name: "rating") Rating? rating,
+    @Default(false) bool isLiked,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);

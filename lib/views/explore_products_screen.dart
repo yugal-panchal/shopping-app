@@ -2,12 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:seek_assesment/controllers/shopping_controller.dart';
+import 'package:seek_assesment/controllers/user_controller.dart';
 import 'package:seek_assesment/views/style/text_style.dart';
 import 'package:seek_assesment/views/widgets/product_card.dart';
 
-class ExploreProducts extends StatelessWidget {
+class ExploreProducts extends StatefulWidget {
+  const ExploreProducts({super.key});
+
+  @override
+  State<ExploreProducts> createState() => _ExploreProductsState();
+}
+
+class _ExploreProductsState extends State<ExploreProducts> {
   final ShoppingController shopController = Get.put(ShoppingController());
-  ExploreProducts({super.key});
+  final UserController userController = Get.put(UserController());
+
+  @override
+  void initState() {
+    shopController.initializeLikedProduct(userController.likedProducts);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +75,7 @@ class ExploreProducts extends StatelessWidget {
                               mainAxisSpacing: 20,
                               crossAxisCount: 2),
                       itemBuilder: (context, index) => ProductCard(
-                        product: controller.products[index],
+                        index: index,
                       ),
                     ),
                   ),

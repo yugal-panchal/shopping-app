@@ -16,6 +16,7 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
       rating: json['rating'] == null
           ? null
           : Rating.fromJson(json['rating'] as Map<String, dynamic>),
+      isLiked: json['isLiked'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
       'category': instance.category,
       'image': instance.image,
       'rating': instance.rating,
+      'isLiked': instance.isLiked,
     };
 
 _$_Rating _$$_RatingFromJson(Map<String, dynamic> json) => _$_Rating(

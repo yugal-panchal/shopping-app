@@ -22,18 +22,34 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 mixin _$Product {
   @JsonKey(name: "id")
   int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "id")
+  set id(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "title")
   String? get title => throw _privateConstructorUsedError;
+  @JsonKey(name: "title")
+  set title(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "price")
   double? get price => throw _privateConstructorUsedError;
+  @JsonKey(name: "price")
+  set price(double? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: "description")
+  set description(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "category")
   String? get category => throw _privateConstructorUsedError;
+  @JsonKey(name: "category")
+  set category(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
   String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  set image(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "rating")
   Rating? get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: "rating")
+  set rating(Rating? value) => throw _privateConstructorUsedError;
+  bool get isLiked => throw _privateConstructorUsedError;
+  set isLiked(bool value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +68,8 @@ abstract class $ProductCopyWith<$Res> {
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "category") String? category,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "rating") Rating? rating});
+      @JsonKey(name: "rating") Rating? rating,
+      bool isLiked});
 
   $RatingCopyWith<$Res>? get rating;
 }
@@ -77,6 +94,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? category = freezed,
     Object? image = freezed,
     Object? rating = freezed,
+    Object? isLiked = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -107,6 +125,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as Rating?,
+      isLiked: null == isLiked
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -137,7 +159,8 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "category") String? category,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "rating") Rating? rating});
+      @JsonKey(name: "rating") Rating? rating,
+      bool isLiked});
 
   @override
   $RatingCopyWith<$Res>? get rating;
@@ -160,6 +183,7 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? category = freezed,
     Object? image = freezed,
     Object? rating = freezed,
+    Object? isLiked = null,
   }) {
     return _then(_$_Product(
       id: freezed == id
@@ -190,6 +214,10 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as Rating?,
+      isLiked: null == isLiked
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -204,58 +232,41 @@ class _$_Product implements _Product {
       @JsonKey(name: "description") this.description,
       @JsonKey(name: "category") this.category,
       @JsonKey(name: "image") this.image,
-      @JsonKey(name: "rating") this.rating});
+      @JsonKey(name: "rating") this.rating,
+      this.isLiked = false});
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
       _$$_ProductFromJson(json);
 
   @override
   @JsonKey(name: "id")
-  final int? id;
+  int? id;
   @override
   @JsonKey(name: "title")
-  final String? title;
+  String? title;
   @override
   @JsonKey(name: "price")
-  final double? price;
+  double? price;
   @override
   @JsonKey(name: "description")
-  final String? description;
+  String? description;
   @override
   @JsonKey(name: "category")
-  final String? category;
+  String? category;
   @override
   @JsonKey(name: "image")
-  final String? image;
+  String? image;
   @override
   @JsonKey(name: "rating")
-  final Rating? rating;
+  Rating? rating;
+  @override
+  @JsonKey()
+  bool isLiked;
 
   @override
   String toString() {
-    return 'Product(id: $id, title: $title, price: $price, description: $description, category: $category, image: $image, rating: $rating)';
+    return 'Product(id: $id, title: $title, price: $price, description: $description, category: $category, image: $image, rating: $rating, isLiked: $isLiked)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Product &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.rating, rating) || other.rating == rating));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, price, description, category, image, rating);
 
   @JsonKey(ignore: true)
   @override
@@ -273,37 +284,55 @@ class _$_Product implements _Product {
 
 abstract class _Product implements Product {
   factory _Product(
-      {@JsonKey(name: "id") final int? id,
-      @JsonKey(name: "title") final String? title,
-      @JsonKey(name: "price") final double? price,
-      @JsonKey(name: "description") final String? description,
-      @JsonKey(name: "category") final String? category,
-      @JsonKey(name: "image") final String? image,
-      @JsonKey(name: "rating") final Rating? rating}) = _$_Product;
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "title") String? title,
+      @JsonKey(name: "price") double? price,
+      @JsonKey(name: "description") String? description,
+      @JsonKey(name: "category") String? category,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "rating") Rating? rating,
+      bool isLiked}) = _$_Product;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
   @JsonKey(name: "id")
   int? get id;
+  @JsonKey(name: "id")
+  set id(int? value);
   @override
   @JsonKey(name: "title")
   String? get title;
+  @JsonKey(name: "title")
+  set title(String? value);
   @override
   @JsonKey(name: "price")
   double? get price;
+  @JsonKey(name: "price")
+  set price(double? value);
   @override
   @JsonKey(name: "description")
   String? get description;
+  @JsonKey(name: "description")
+  set description(String? value);
   @override
   @JsonKey(name: "category")
   String? get category;
+  @JsonKey(name: "category")
+  set category(String? value);
   @override
   @JsonKey(name: "image")
   String? get image;
+  @JsonKey(name: "image")
+  set image(String? value);
   @override
   @JsonKey(name: "rating")
   Rating? get rating;
+  @JsonKey(name: "rating")
+  set rating(Rating? value);
+  @override
+  bool get isLiked;
+  set isLiked(bool value);
   @override
   @JsonKey(ignore: true)
   _$$_ProductCopyWith<_$_Product> get copyWith =>
