@@ -8,6 +8,7 @@ class UserController extends GetxController {
   var name = "".obs;
   List likedProductsJson = [].obs;
   List<Product> likedProducts = <Product>[].obs;
+  var hasLikedProducts = true.obs;
 
   // @override
   // void onInit(){
@@ -17,7 +18,6 @@ class UserController extends GetxController {
 
   addUser(String userName) async {
     try {
-      var docDataSnapsot;
       name.value = userName;
       bool isDocExists = false;
       CollectionReference user = FirebaseFirestore.instance.collection("users");
@@ -27,11 +27,7 @@ class UserController extends GetxController {
         isDocExists = true;
       }
       if (isDocExists) {
-        docDataSnapsot = await user.doc(name.value).get();
-        Map<String, dynamic> docData = docDataSnapsot.data();
-        for (var liked in docData["liked_products"]) {
-          likedProducts.add(Product.fromJson(liked));
-        }
+        getLikedProducts();
       } else {
         user.doc(name.value).set({"liked_products": likedProductsJson});
       }
@@ -69,5 +65,21 @@ class UserController extends GetxController {
           showToast("Error updating Cloud Firestore");
           debugPrint(e.toString());
         });
+  }
+
+  getLikedProducts() async {
+    CollectionReference user = FirebaseFirestore.instance.collection("users");
+    var docDataSnapsot;
+    likedProducts.clear();
+    docDataSnapsot = await user.doc(name.value).get();
+    Map<String, dynamic> docData = docDataSnapsot.data();
+    for (var liked in docData["liked_products"]) {
+      likedProducts.add(Product.fromJson(liked));
+    }
+    if (likedProducts.isEmpty) {
+      hasLikedProducts.value = false;
+    } else {
+      hasLikedProducts.value = true;
+    }
   }
 }

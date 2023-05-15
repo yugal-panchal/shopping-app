@@ -67,6 +67,7 @@ class  ShoppingController extends GetxController {
   }
 
   initializeLikedProduct(List<Product> likedProducts)async {
+    products.clear();
     await getAllProducts();
     for(int i =0;i<likedProducts.length;i++){
       for(int j=0;j<products.length;j++){
