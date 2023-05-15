@@ -14,7 +14,7 @@ class ExploreProducts extends StatefulWidget {
 }
 
 class _ExploreProductsState extends State<ExploreProducts> {
-  final ShoppingController shopController = Get.put(ShoppingController());
+  final ShoppingController shopController = Get.find<ShoppingController>();
   final UserController userController = Get.put(UserController());
 
   @override
@@ -57,27 +57,45 @@ class _ExploreProductsState extends State<ExploreProducts> {
                       )
                     ],
                   ),
-                  Text(
-                    "${controller.products.length} available products",
-                    style: Style.h16,
-                  ),
+                  controller.showingSearch.value
+                      ? Text(
+                          "${controller.searchList.length} available products",
+                          style: Style.h16,
+                        )
+                      : Text(
+                          "${controller.products.length} available products",
+                          style: Style.h16,
+                        ),
                   const SizedBox(
                     height: 10,
                   ),
                   Expanded(
                     child: GridView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: controller.products.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              childAspectRatio: 0.75,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 20,
-                              crossAxisCount: 2),
-                      itemBuilder: (context, index) => ProductCard(
-                        index: index,
-                      ),
-                    ),
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: controller.showingSearch.value
+                            ? controller.searchList.length
+                            : controller.products.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                childAspectRatio: 0.75,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 20,
+                                crossAxisCount: 2),
+                        itemBuilder: (context, index) {
+                          if (controller.showingSearch.value &&
+                              controller.searchList.isEmpty) {
+                            return Center(
+                              child: Text(
+                                "No product available",
+                                style: Style.h16
+                                    .copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            );
+                          }
+                          return ProductCard(
+                            index: index,
+                          );
+                        }),
                   ),
                 ],
               );

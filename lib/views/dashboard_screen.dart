@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:seek_assesment/controllers/shopping_controller.dart';
 import 'package:seek_assesment/views/cart_screen.dart';
 import 'package:seek_assesment/views/explore_products_screen.dart';
 import 'package:seek_assesment/views/product_list_screen.dart';
 import 'package:seek_assesment/views/profile_screen.dart';
 import 'package:seek_assesment/views/wishlist_screen.dart';
-
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -15,6 +16,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  final ShoppingController shoppingController = Get.put(ShoppingController());
   int _selectedIndex = 0;
   List<Widget> widgetList = [];
 
@@ -97,24 +99,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           leading: Padding(
-            padding: const EdgeInsets.only(top:10),
+            padding: const EdgeInsets.only(top: 10),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+              },
               icon: SvgPicture.asset("assets/icons/menu.svg"),
             ),
           ),
           title: Container(
             width: double.infinity,
             height: 50,
-            padding: const EdgeInsets.only(top:10),
-            child: const TextField(
+            padding: const EdgeInsets.only(top: 10),
+            child: TextField(
+              onSubmitted: (value) {
+                shoppingController.showSearchResult(value);
+              },
               textAlignVertical: TextAlignVertical.bottom,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                    borderSide: BorderSide(color: Colors.white),),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  borderSide: BorderSide(color: Colors.white),
+                ),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
@@ -124,7 +131,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
                     ),
-                    borderSide: BorderSide(color: Colors.white,width: 0)),
+                    borderSide: BorderSide(color: Colors.white, width: 0)),
                 filled: true,
                 prefixIcon: Icon(
                   Icons.search,
@@ -142,10 +149,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           leading: Padding(
-            padding: const EdgeInsets.only(top:10),
+            padding: const EdgeInsets.only(top: 10),
             child: IconButton(
-              onPressed: () {
-              },
+              onPressed: () {},
               icon: SvgPicture.asset("assets/icons/menu.svg"),
             ),
           ),

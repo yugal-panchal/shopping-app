@@ -7,6 +7,14 @@ import '../models/product.dart';
 class  ShoppingController extends GetxController {
   final ApiCaller _apiCaller = ApiCaller();
   List<Product> products = <Product>[].obs;
+  List<Product> searchList = <Product>[].obs;
+  List<Product> filterList = <Product>[].obs;
+  var showingSearch = false.obs;
+  var showingFilter = false.obs;
+  var showElectronics = false.obs;
+  var showJewelery = false.obs;
+  var showMenCloths = false.obs;
+  var showWomenCloths = false.obs;
   var currentProduct = Product().obs;
   var sizeFormat = "".obs;
 
@@ -68,5 +76,21 @@ class  ShoppingController extends GetxController {
         }
       }
     }
-  }  
+  }
+
+  showSearchResult(String key){
+    if(key == ""){
+      showingSearch.value = false;
+      return;
+    }
+    showingSearch.value = true;
+    List<Product> tempSearch = [];
+    for(Product product in products){
+      if(product.title?.contains(key) ?? false){
+        tempSearch.add(product);
+      }
+    }
+    searchList.clear();
+    searchList.addAll(tempSearch);
+  }
 }
