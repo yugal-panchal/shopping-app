@@ -37,6 +37,7 @@ class  ShoppingController extends GetxController {
   productLiked(int id) {
     Product current = products.firstWhere((element) => element.id == id);
     current = current.copyWith(isLiked: true);
+    currentProduct.value = current;
     for (int i=0;i<products.length;i++) {
       if (products[i].id == id) {
         products[i] = current;
@@ -48,6 +49,7 @@ class  ShoppingController extends GetxController {
   productDisliked(int id) {
     Product current = products.firstWhere((element) => element.id == id);
     current = current.copyWith(isLiked: false);
+    currentProduct.value = current;
     for (int i=0;i<products.length;i++) {
       if (products[i].id == id) {
         products[i] = current;

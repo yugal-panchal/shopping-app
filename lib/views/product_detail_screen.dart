@@ -10,30 +10,52 @@ import 'package:seek_assesment/views/widgets/product_image_card.dart';
 import 'package:seek_assesment/views/widgets/size_widget.dart';
 
 import '../controllers/helpers/constants.dart';
+import '../controllers/user_controller.dart';
 
 class ProductDetails extends StatelessWidget {
   final ShoppingController shoppingController = Get.find<ShoppingController>();
+  final UserController userController = Get.find<UserController>();
   ProductDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(244, 244, 244, 1),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.black,
-        leading: IconButton(
-            onPressed: () => Get.close(1),
-            icon: const Icon(Icons.arrow_back_ios)),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset("assets/icons/heart.svg"),
-          ),
-        ],
-      ),
-      body: GetX<ShoppingController>(builder: (controller) {
-        return SingleChildScrollView(
+    return GetX<ShoppingController>(builder: (controller) {
+      return Scaffold(
+        backgroundColor: const Color.fromRGBO(244, 244, 244, 1),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.black,
+          leading: IconButton(
+              onPressed: () => Get.close(1),
+              icon: const Icon(Icons.arrow_back_ios)),
+          actions: [
+            shoppingController.currentProduct.value.isLiked
+                ? IconButton(
+                    onPressed: () {
+                      shoppingController.productDisliked(
+                          shoppingController.currentProduct.value.id ?? 0);
+                      userController.removeLikedProducts(
+                          shoppingController.currentProduct.value.id ?? 0);
+                    },
+                    icon: SvgPicture.asset(
+                      "assets/icons/heart_filled.svg",
+                      color: Colors.white,
+                    ),
+                  )
+                : IconButton(
+                    onPressed: () {
+                      shoppingController.productLiked(
+                          shoppingController.currentProduct.value.id ?? 0);
+                      userController.addLikedProducts(
+                          shoppingController.currentProduct.value);
+                    },
+                    icon: SvgPicture.asset(
+                      "assets/icons/heart.svg",
+                    ),
+                  )
+          ],
+        ),
+        body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -131,9 +153,9 @@ class ProductDetails extends StatelessWidget {
               ],
             ),
           ),
-        );
-      }),
-    );
+        ),
+      );
+    });
   }
 }
 
