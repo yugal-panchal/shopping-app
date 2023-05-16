@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:seek_assesment/models/product.dart';
 import 'package:seek_assesment/views/product_detail_screen.dart';
 import 'package:seek_assesment/views/style/text_style.dart';
 

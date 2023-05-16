@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:seek_assesment/views/style/text_style.dart';
 import 'package:seek_assesment/views/widgets/liked_product_card.dart';
-import 'package:seek_assesment/views/widgets/product_card.dart';
 
 import '../controllers/user_controller.dart';
 
