@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/yugal-panchal/shopping-app">
-    <img src="readme/3.png" alt="Logo" width="80" height="80">
+    <img src="readme/logo.jpeg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Shopping App</h3>
